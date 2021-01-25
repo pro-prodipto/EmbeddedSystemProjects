@@ -1,0 +1,95 @@
+C51 COMPILER V9.60.0.0   CHASER                                                            12/31/2020 20:36:56 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE CHASER
+OBJECT MODULE PLACED IN .\Objects\chaser.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE chaser.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ch
+                    -aser.lst) TABS(2) OBJECT(.\Objects\chaser.obj)
+
+line level    source
+
+   1          //This is the basic program for LED chaser using 8051, because as you see this program is very large that’
+             -s why it is very basic program for easily understanding the Embedded C programming. Before you seeing this program you m
+             -ay know about keil software. Lets see the program..
+   2          
+   3          
+   4          #include<reg51.h>           // This command is used for including all register file of 8051.
+   5          sbit led1=P2^0;                // This is used for initializing single bit of P2.0 to led1.
+   6          sbit led2=P2^1;
+   7          sbit led3=P2^2;
+   8          sbit led4=P2^3;
+   9          sbit led5=P2^4;
+  10          sbit led6=P2^5;
+  11          sbit led7=P2^6;
+  12          sbit led8=P2^7;
+  13          
+  14          void delay (unsigned int ms)                   // This loop is used for time taken by each led is ON or OF
+             -F.
+  15          {
+  16   1                      unsigned int i, j;                                                        
+  17   1                      for (i=0; i<=ms; i++)
+  18   1                       for (j=0; j<1275; j++);                                 // Here 1275 indicates 1 millisec
+             -ond.
+  19   1      }
+  20          void main ()
+  21          {  
+  22   1                                      led1=0;
+  23   1                                      led2=0;                      // Firstly I initialize all leds into OFF sta
+             -te
+  24   1                                      led3=0;                      //          i.e. led (n) =0;
+  25   1                                      led4=0;                      //                   n: - No. of Leds */
+  26   1                                      led5=0;
+  27   1                                      led6=0;
+  28   1                                      led7=0;
+  29   1                                      led8=0;
+  30   1                      while (1)
+  31   1                      {
+  32   2                                     
+  33   2                                      delay (10);                  // delay (10) means led 1 is ON by delay 10 m
+             -illiseconds.
+  34   2                                      led1=1;
+  35   2                                      delay (10);
+  36   2                                      led1=0;
+  37   2                                      led2=1;
+  38   2                                      delay (10);
+  39   2                                      led2=0;
+  40   2                                      led3=1;
+  41   2                                      delay (10);
+  42   2                                      led3=0;
+  43   2                                      led4=1;
+  44   2                                      delay (10);
+  45   2                                      led4=0;
+  46   2                                      led5=1;
+  47   2                                      delay (10);
+  48   2                                      led5=0;
+C51 COMPILER V9.60.0.0   CHASER                                                            12/31/2020 20:36:56 PAGE 2   
+
+  49   2                                      led6=1;
+  50   2                                      delay (10);
+  51   2                                      led6=0;
+  52   2                                      led7=1;
+  53   2                                      delay (10);
+  54   2                                      led7=0;
+  55   2                                      led8=1;
+  56   2                                      delay (10);
+  57   2                                      led8=0;
+  58   2                                      led1=1;
+  59   2                      }
+  60   1      }               
+  61          
+  62          //You can use Arrays concept on this program then shorten the program. But I make this program for easily 
+             -understanding to every one.
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    115    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

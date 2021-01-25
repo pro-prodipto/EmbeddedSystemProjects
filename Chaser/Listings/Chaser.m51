@@ -1,0 +1,133 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/31/2020  20:36:57  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\chaser.obj TO .\Objects\Chaser PRINT (.\Listings\Chaser.m51) CODE (0X0000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\chaser.obj (CHASER)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\Chaser (CHASER)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0053H     UNIT         ?PR?MAIN?CHASER
+            CODE    0853H     0020H     UNIT         ?PR?_DELAY?CHASER
+            CODE    0873H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Chaser (CHASER)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?CHASER
+
+?PR?MAIN?CHASER
+  +--> ?PR?_DELAY?CHASER
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Chaser (CHASER)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CHASER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0853H         PUBLIC        _delay
+  C:0800H         PUBLIC        main
+  B:00A0H.0       PUBLIC        led1
+  B:00A0H.1       PUBLIC        led2
+  B:00A0H.2       PUBLIC        led3
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/31/2020  20:36:57  PAGE 2
+
+
+  B:00A0H.3       PUBLIC        led4
+  B:00A0H.4       PUBLIC        led5
+  B:00A0H.5       PUBLIC        led6
+  B:00A0H.6       PUBLIC        led7
+  B:00A0H.7       PUBLIC        led8
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0853H         LINE#         14
+  C:0853H         LINE#         15
+  C:0853H         LINE#         17
+  C:085DH         LINE#         18
+  C:0872H         LINE#         19
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  C:0800H         LINE#         20
+  C:0800H         LINE#         21
+  C:0800H         LINE#         22
+  C:0802H         LINE#         23
+  C:0804H         LINE#         24
+  C:0806H         LINE#         25
+  C:0808H         LINE#         26
+  C:080AH         LINE#         27
+  C:080CH         LINE#         28
+  C:080EH         LINE#         29
+  C:0810H         LINE#         30
+  C:0810H         LINE#         31
+  C:0810H         LINE#         33
+  C:0817H         LINE#         34
+  C:0819H         LINE#         35
+  C:081CH         LINE#         36
+  C:081EH         LINE#         37
+  C:0820H         LINE#         38
+  C:0823H         LINE#         39
+  C:0825H         LINE#         40
+  C:0827H         LINE#         41
+  C:082AH         LINE#         42
+  C:082CH         LINE#         43
+  C:082EH         LINE#         44
+  C:0831H         LINE#         45
+  C:0833H         LINE#         46
+  C:0835H         LINE#         47
+  C:0838H         LINE#         48
+  C:083AH         LINE#         49
+  C:083CH         LINE#         50
+  C:083FH         LINE#         51
+  C:0841H         LINE#         52
+  C:0843H         LINE#         53
+  C:0846H         LINE#         54
+  C:0848H         LINE#         55
+  C:084AH         LINE#         56
+  C:084DH         LINE#         57
+  C:084FH         LINE#         58
+  C:0851H         LINE#         59
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/31/2020  20:36:57  PAGE 3
+
+
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        CHASER
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0073H BYTE ( 5%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=130
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

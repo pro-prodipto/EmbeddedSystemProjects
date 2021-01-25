@@ -1,0 +1,112 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              01/25/2021 17:50:30 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          // Code for 7 Segment Display Interfacing with 8051 Microcontroller (AT89S52)...
+   2          
+   3          //#include<reg51.h>
+   4          #include<reg52.h>
+   5          #include<stdio.h>
+   6          //#include<reg51.h>
+   7          sbit LED = P1^0;
+   8          sbit sw = P1^5;
+   9          sbit seg8 = P2^7;  //the decimal...
+  10          //for F
+  11          sbit segG = P2^4;
+  12          sbit segF = P2^5;
+  13          sbit segE = P2^6;
+  14          sbit segA = P2^0;
+  15          
+  16          unsigned int k=0;
+  17          //k=0;
+  18          unsigned char no_code[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90}; //Array for hex values (0-9) 
+             -for common anode 7 segment
+  19              
+  20          void pattern(void);
+  21          
+  22          void msdelay(unsigned int time)  // Function for creating delay in milliseconds.
+  23          {
+  24   1          unsigned i,j ;
+  25   1          for(i=0;i<time;i++)    
+  26   1          for(j=0;j<1275;j++);
+  27   1      }
+  28          
+  29          void main()
+  30          {
+  31   1        //P1 = 0x00;  //we're gonna use a switch here at pin 6 so let it be high by default...
+  32   1        P2 = 0xFF; //going high...for common anode 7-segment display...
+  33   1        P3 = 0x00; //we don't need it so LOW...
+  34   1        //P0 does not have any internal pull-up resistor...
+  35   1        LED = 0; //makes the pin as the output;
+  36   1        seg8 = 0;
+  37   1          while(1)
+  38   1          {
+  39   2              if(sw == 0)  //if the switch is pressed...
+  40   2              { //here we have to provides a delay to prevent from switch bouncing
+  41   3                LED = 1;
+  42   3                msdelay(20); //Wait time more then bouncing period
+  43   3                LED = 0;
+  44   3                if(sw == 0) //still pressed...
+  45   3                {
+  46   4                  k++;  //increase number by one... 
+  47   4                }
+  48   3              }
+  49   2              
+  50   2              if(k==10)
+  51   2              {
+  52   3                pattern();
+  53   3                k=0;  //initialising display to '0' again...
+C51 COMPILER V9.60.0.0   MAIN                                                              01/25/2021 17:50:30 PAGE 2   
+
+  54   3                P2 = 0xFF; //making display blank...by making all pins high
+  55   3                //msdelay(500);
+  56   3              }
+  57   2                    
+  58   2                P2=no_code[k];  //increase the display...
+  59   2                msdelay(5);  //delay for the processor...
+  60   2              
+  61   2          }
+  62   1      }
+  63          
+  64          void pattern(void)
+  65          {
+  66   1        int i;
+  67   1        P2 = 0xFF;
+  68   1        segG = 0;
+  69   1        segE = 0;
+  70   1        segF = 0;
+  71   1        segA = 0;
+  72   1        //FUCK YOU..!!
+  73   1        for(i=1;i<=5;i++)
+  74   1        {
+  75   2          //P2 = 0xFF;  
+  76   2          seg8 = 0;
+  77   2          msdelay(50);
+  78   2          seg8 = 1;
+  79   2          msdelay(50);
+  80   2        }
+  81   1        segG = 1;
+  82   1        segE = 1;
+  83   1        segF = 1;
+  84   1        segA = 1;
+  85   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    149    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
